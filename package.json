@@ -1,0 +1,15 @@
+{
+  "name": "devtinder-backend",
+  "version": "1.0.0",
+  "description": "Developing backend for app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/app.js"
+  },
+  "author": "Swapnil Mapari",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "git": "^0.1.5"
+  }
+}
