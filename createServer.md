@@ -44,3 +44,25 @@ app.use((req,res)=>{
     res.send("Listening the request...!")
 })
 
+While routing it match the route and if it is matching it won't go further.
+Order matters alot.
+
+routes..
+/test/01/ -- Hii Test01
+/test     -- Hii Test
+/         -- Hii All.
+
+Results.. 
+
+/test  -- Hii Test
+/test/scjshcj -- Hii Test
+
+/test/01/bsjcj -- Hii Test01
+
+/svbabbv -- Hii All
+
+
+To test API we will use postman tool...
+To use post >> install it for your operating system >> put API and to CRUD operation accordingly.
+
+
