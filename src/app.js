@@ -1,23 +1,31 @@
 const express = require('express')
+const {connectDB} = require('./config/dataBase.js')
+const {User} = require('./models/user.js')
 
 const {adminAuth} = require('./auth.js')
 const app = express()
 
-app.listen(3000,()=>{
-    console.log("Server is up and listening to port 3000")
+app.post("/signup",async (req,res)=>{
+    const user = new User({
+        firstName: "Swapnil",
+        lastName : "Mapari",
+        emailId: "swapnilmapari6@gmail.com",
+        password: "Clash@1198",
+        age :27,
+        gender: "Male"
+    })
+    try {
+        await user.save().then(
+            res.send("Data inserted sucessfully..!")
+        )}
+    catch (err){
+        res.status(400).send("Not inserted"+err.message)
+    }
 })
 
-
-app.use("/admin",adminAuth)
-
-app.use("/admin/update",(req,res,next)=>{
-        try {
-            throw new Error ("gdsvsv")
-        } catch (err) {
-            res.status(500).send("caught error in try catch..")
-        }
+connectDB().then(()=>{
+    app.listen(7777,()=>{
+        console.log("Up and listening to server...")
+    })
 })
 
-// app.use("/",(err,req,res,next)=>{
-//     res.status(500).send("something went wrong...")
-// })
