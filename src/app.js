@@ -5,15 +5,19 @@ const {User} = require('./models/user.js')
 const {adminAuth} = require('./auth.js')
 const app = express()
 
+app.use(express.json());
+
 app.post("/signup",async (req,res)=>{
-    const user = new User({
-        firstName: "Swapnil",
-        lastName : "Mapari",
-        emailId: "swapnilmapari6@gmail.com",
-        password: "Clash@1198",
-        age :27,
-        gender: "Male"
-    })
+    // const user = new User({
+    //     firstName: "Swapnil",
+    //     lastName : "Mapari",
+    //     emailId: "swapnilmapari6@gmail.com",
+    //     password: "Clash@1198",
+    //     age :27,
+    //     gender: "Male"
+    // })
+    const user = new User(req.body)
+// console.log(req.body)
     try {
         await user.save().then(
             res.send("Data inserted sucessfully..!")
